@@ -18,6 +18,10 @@
 		C1694D7E2D0B0CE800805854 /* SplitCheckPlinkoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D7D2D0B0CE800805854 /* SplitCheckPlinkoUITestsLaunchTests.swift */; };
 		C1694D942D0B0E7A00805854 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D932D0B0E7A00805854 /* HomeView.swift */; };
 		C1694D972D0B10BD00805854 /* WelcomeSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D962D0B10BD00805854 /* WelcomeSubView.swift */; };
+		C1694D9A2D0B144A00805854 /* EmptyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D992D0B144A00805854 /* EmptyHomeView.swift */; };
+		C1694D9C2D0B15EA00805854 /* UserCardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D9B2D0B15EA00805854 /* UserCardCellView.swift */; };
+		C1694D9E2D0B17D900805854 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D9D2D0B17D900805854 /* UserListView.swift */; };
+		C1694DA02D0B1C2C00805854 /* PlusButtonSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D9F2D0B1C2C00805854 /* PlusButtonSubView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		C1694D7D2D0B0CE800805854 /* SplitCheckPlinkoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitCheckPlinkoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C1694D932D0B0E7A00805854 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C1694D962D0B10BD00805854 /* WelcomeSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSubView.swift; sourceTree = "<group>"; };
+		C1694D992D0B144A00805854 /* EmptyHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyHomeView.swift; sourceTree = "<group>"; };
+		C1694D9B2D0B15EA00805854 /* UserCardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardCellView.swift; sourceTree = "<group>"; };
+		C1694D9D2D0B17D900805854 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
+		C1694D9F2D0B1C2C00805854 /* PlusButtonSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButtonSubView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				C1694D922D0B0E7100805854 /* View */,
+				C1694D982D0B141A00805854 /* SubView */,
 				C1694D912D0B0E6C00805854 /* ViewModel */,
 			);
 			path = Home;
@@ -215,6 +224,17 @@
 			isa = PBXGroup;
 			children = (
 				C1694D962D0B10BD00805854 /* WelcomeSubView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		C1694D982D0B141A00805854 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				C1694D992D0B144A00805854 /* EmptyHomeView.swift */,
+				C1694D9B2D0B15EA00805854 /* UserCardCellView.swift */,
+				C1694D9D2D0B17D900805854 /* UserListView.swift */,
+				C1694D9F2D0B1C2C00805854 /* PlusButtonSubView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -350,11 +370,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1694D682D0B0CE800805854 /* SplitCheckPlinko.xcdatamodeld in Sources */,
+				C1694D9E2D0B17D900805854 /* UserListView.swift in Sources */,
 				C1694D652D0B0CE800805854 /* Persistence.swift in Sources */,
 				C1694D5E2D0B0CE700805854 /* WelcomeView.swift in Sources */,
+				C1694D9A2D0B144A00805854 /* EmptyHomeView.swift in Sources */,
 				C1694D942D0B0E7A00805854 /* HomeView.swift in Sources */,
+				C1694D9C2D0B15EA00805854 /* UserCardCellView.swift in Sources */,
 				C1694D972D0B10BD00805854 /* WelcomeSubView.swift in Sources */,
 				C1694D5C2D0B0CE700805854 /* SplitCheckPlinkoApp.swift in Sources */,
+				C1694DA02D0B1C2C00805854 /* PlusButtonSubView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
