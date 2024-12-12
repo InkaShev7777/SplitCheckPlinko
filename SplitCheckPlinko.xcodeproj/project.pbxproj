@@ -17,6 +17,7 @@
 		C1694D7C2D0B0CE800805854 /* SplitCheckPlinkoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D7B2D0B0CE800805854 /* SplitCheckPlinkoUITests.swift */; };
 		C1694D7E2D0B0CE800805854 /* SplitCheckPlinkoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D7D2D0B0CE800805854 /* SplitCheckPlinkoUITestsLaunchTests.swift */; };
 		C1694D942D0B0E7A00805854 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D932D0B0E7A00805854 /* HomeView.swift */; };
+		C1694D972D0B10BD00805854 /* WelcomeSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D962D0B10BD00805854 /* WelcomeSubView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		C1694D7B2D0B0CE800805854 /* SplitCheckPlinkoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitCheckPlinkoUITests.swift; sourceTree = "<group>"; };
 		C1694D7D2D0B0CE800805854 /* SplitCheckPlinkoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitCheckPlinkoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C1694D932D0B0E7A00805854 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C1694D962D0B10BD00805854 /* WelcomeSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSubView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				C1694D902D0B0E4B00805854 /* View */,
+				C1694D952D0B109D00805854 /* SubView */,
 			);
 			path = WelcomeScreen;
 			sourceTree = "<group>";
@@ -206,6 +209,14 @@
 				C1694D932D0B0E7A00805854 /* HomeView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C1694D952D0B109D00805854 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				C1694D962D0B10BD00805854 /* WelcomeSubView.swift */,
+			);
+			path = SubView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +353,7 @@
 				C1694D652D0B0CE800805854 /* Persistence.swift in Sources */,
 				C1694D5E2D0B0CE700805854 /* WelcomeView.swift in Sources */,
 				C1694D942D0B0E7A00805854 /* HomeView.swift in Sources */,
+				C1694D972D0B10BD00805854 /* WelcomeSubView.swift in Sources */,
 				C1694D5C2D0B0CE700805854 /* SplitCheckPlinkoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

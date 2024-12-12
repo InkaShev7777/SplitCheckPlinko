@@ -13,7 +13,16 @@ struct WelcomeView: View {
     var body: some View {
         VStack {
             if isShowHomeView {
-                
+                HomeView()
+            } else {
+                WelcomeSubView()
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                withAnimation {
+                    isShowHomeView = true
+                }
             }
         }
     }

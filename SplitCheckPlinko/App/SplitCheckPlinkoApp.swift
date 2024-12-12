@@ -14,7 +14,6 @@ struct SplitCheckPlinkoApp: App {
     var body: some Scene {
         WindowGroup {
             WelcomeView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
