@@ -22,6 +22,11 @@
 		C1694D9C2D0B15EA00805854 /* UserCardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D9B2D0B15EA00805854 /* UserCardCellView.swift */; };
 		C1694D9E2D0B17D900805854 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D9D2D0B17D900805854 /* UserListView.swift */; };
 		C1694DA02D0B1C2C00805854 /* PlusButtonSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694D9F2D0B1C2C00805854 /* PlusButtonSubView.swift */; };
+		C1694DA22D0B21CB00805854 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694DA12D0B21CB00805854 /* HomeViewModel.swift */; };
+		C1694DA52D0B2B7B00805854 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694DA42D0B2B7B00805854 /* User.swift */; };
+		C1694DB02D0B332200805854 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694DAE2D0B332200805854 /* UserEntity+CoreDataClass.swift */; };
+		C1694DB12D0B332200805854 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694DAF2D0B332200805854 /* UserEntity+CoreDataProperties.swift */; };
+		C1694DB42D0B341500805854 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694DB32D0B341500805854 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +65,11 @@
 		C1694D9B2D0B15EA00805854 /* UserCardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardCellView.swift; sourceTree = "<group>"; };
 		C1694D9D2D0B17D900805854 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		C1694D9F2D0B1C2C00805854 /* PlusButtonSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButtonSubView.swift; sourceTree = "<group>"; };
+		C1694DA12D0B21CB00805854 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		C1694DA42D0B2B7B00805854 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C1694DAE2D0B332200805854 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C1694DAF2D0B332200805854 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C1694DB32D0B341500805854 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +122,9 @@
 			children = (
 				C1694D8C2D0B0D1400805854 /* App */,
 				C1694D8B2D0B0D1000805854 /* Core */,
-				C1694D8D2D0B0D2D00805854 /* Data */,
+				C1694DA32D0B2B6D00805854 /* Models */,
+				C1694DB22D0B33FB00805854 /* Managers */,
+				C1694D8D2D0B0D2D00805854 /* CoreData */,
 				C1694D8A2D0B0D0600805854 /* Other */,
 				C1694D612D0B0CE800805854 /* Preview Content */,
 			);
@@ -170,12 +182,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		C1694D8D2D0B0D2D00805854 /* Data */ = {
+		C1694D8D2D0B0D2D00805854 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				C1694DAE2D0B332200805854 /* UserEntity+CoreDataClass.swift */,
+				C1694DAF2D0B332200805854 /* UserEntity+CoreDataProperties.swift */,
 				C1694D642D0B0CE800805854 /* Persistence.swift */,
 			);
-			path = Data;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		C1694D8E2D0B0D4400805854 /* Home */ = {
@@ -208,6 +222,7 @@
 		C1694D912D0B0E6C00805854 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C1694DA12D0B21CB00805854 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -237,6 +252,22 @@
 				C1694D9F2D0B1C2C00805854 /* PlusButtonSubView.swift */,
 			);
 			path = SubView;
+			sourceTree = "<group>";
+		};
+		C1694DA32D0B2B6D00805854 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C1694DA42D0B2B7B00805854 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C1694DB22D0B33FB00805854 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C1694DB32D0B341500805854 /* CoreDataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,14 +401,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1694D682D0B0CE800805854 /* SplitCheckPlinko.xcdatamodeld in Sources */,
+				C1694DA22D0B21CB00805854 /* HomeViewModel.swift in Sources */,
 				C1694D9E2D0B17D900805854 /* UserListView.swift in Sources */,
+				C1694DB42D0B341500805854 /* CoreDataManager.swift in Sources */,
 				C1694D652D0B0CE800805854 /* Persistence.swift in Sources */,
 				C1694D5E2D0B0CE700805854 /* WelcomeView.swift in Sources */,
 				C1694D9A2D0B144A00805854 /* EmptyHomeView.swift in Sources */,
 				C1694D942D0B0E7A00805854 /* HomeView.swift in Sources */,
+				C1694DB02D0B332200805854 /* UserEntity+CoreDataClass.swift in Sources */,
 				C1694D9C2D0B15EA00805854 /* UserCardCellView.swift in Sources */,
+				C1694DA52D0B2B7B00805854 /* User.swift in Sources */,
 				C1694D972D0B10BD00805854 /* WelcomeSubView.swift in Sources */,
 				C1694D5C2D0B0CE700805854 /* SplitCheckPlinkoApp.swift in Sources */,
+				C1694DB12D0B332200805854 /* UserEntity+CoreDataProperties.swift in Sources */,
 				C1694DA02D0B1C2C00805854 /* PlusButtonSubView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +592,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bundle.SplitCheckPlinko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -584,6 +623,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bundle.SplitCheckPlinko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

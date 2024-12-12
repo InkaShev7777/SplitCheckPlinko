@@ -17,7 +17,9 @@ struct EmptyHomeView: View {
                 .fontWeight(.semibold)
             
             Button {
-                
+                // action
+                CoreDataManager.shared.addUser(user: User(userName: "Mark"))
+//                CoreDataManager.shared.saveUser(User(userName: "Mark"))
             } label: {
                 Text("Add User")
                     .font(.title2)

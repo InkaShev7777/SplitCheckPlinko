@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var usersList: [String] = ["Ilya", "Vlad", "Mark"]
+    @StateObject var viewModel = HomeViewModel.shared
     
     var body: some View {
         NavigationView {
             ZStack {
-                if usersList.isEmpty {
+                if viewModel.usersList.isEmpty {
                     EmptyHomeView()
                 } else {
                     VStack {
                         ScrollView {
-                            UserListView(usersList: $usersList)
+                            UserListView(usersList: $viewModel.usersList)
                         }
                         .scrollIndicators(.hidden)
                     }
+                    
+                    PlusButtonSubView()
                 }
-                
-                PlusButtonSubView()
             }
         }
     }

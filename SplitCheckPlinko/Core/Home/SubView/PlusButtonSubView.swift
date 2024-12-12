@@ -16,7 +16,10 @@ struct PlusButtonSubView: View {
                 
                 Button {
                     // action
-                    print("Plus Button was Pressed")
+                    withAnimation {
+                        CoreDataManager.shared.addUser(user: User(userName: "Ilya1"))
+                        HomeViewModel.shared.getCoreData()
+                    }
                 } label: {
                     Image(systemName: "plus")
                         .frame(width: 60, height: 60)

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct UserListView: View {
-    @Binding var usersList: [String]
+    @Binding var usersList: [User]
     
     var body: some View {
         VStack {
-            ForEach(0 ..< usersList.count, id: \.self){ user in
-                UserCardCellView(userName: usersList[user])
+            ForEach(usersList){ user in
+                UserCardCellView(userName: user.userName)
             }
         }
     }
