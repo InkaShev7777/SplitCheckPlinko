@@ -11,18 +11,18 @@ import CoreData
 class User: Identifiable {
     var id: String
     var userName: String
-    var orderedProducts: [OrderedProduct]?
+    var orderedProducts: [OrderedProduct]
     
-    init(userName: String) {
-        self.id = UUID().uuidString
+    init(id: String = UUID().uuidString, userName: String) {
+        self.id = id
         self.userName = userName
-        self.orderedProducts = [OrderedProduct(name: "test", price: 1, count: 1)]
+        self.orderedProducts = []
     }
 }
 
 extension UserEntity {
     func toUser() -> User {
-        let user = User(userName: userName ?? "")
+        let user = User(id: id ?? UUID().uuidString, userName: userName ?? "")
         if let productsData = self.orderedProducts,
            let products = try? JSONDecoder().decode([OrderedProduct].self, from: productsData) {
             user.orderedProducts = products
@@ -37,8 +37,7 @@ extension User {
         let entity = UserEntity(context: context)
         entity.id = self.id
         entity.userName = self.userName
-        if let products = self.orderedProducts,
-           let productsData = try? JSONEncoder().encode(products) {
+        if let productsData = try? JSONEncoder().encode(self.orderedProducts) {
             entity.orderedProducts = productsData
         }
         return entity

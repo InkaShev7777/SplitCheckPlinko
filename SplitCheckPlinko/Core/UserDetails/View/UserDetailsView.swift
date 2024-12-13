@@ -38,42 +38,58 @@ struct UserDetailsView: View {
                     .fontWeight(.bold)
             }
             
-            ScrollView {
-                VStack(alignment: .leading, spacing: 8) {
-                    // Заголовок таблицы
-                    HStack {
-                        Text("Product")
-                            .fontWeight(.bold)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("Price")
-                            .fontWeight(.bold)
-                            .frame(width: 60, alignment: .trailing)
-                        Text("Qty")
-                            .fontWeight(.bold)
-                            .frame(width: 40, alignment: .trailing)
-                    }
-                    Divider()
+            if user.orderedProducts.isEmpty {
+                VStack {
                     
-                    ForEach(user.orderedProducts ?? []){ item in
+                    VStack {
+                        Text("There's nothing yet")
+                            .font(.title2)
+                        
+                        Text("Click on the plus button to add a product")
+                            .font(.footnote)
+                    }
+                    .padding(.top, 70)
+                    
+                    Spacer()
+                }
+            } else {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 8) {
+                        // Заголовок таблицы
                         HStack {
-                            Text(item.name)
+                            Text("Product")
+                                .fontWeight(.bold)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            Text("\(String(format: "%.2f", item.price))$")
-                                .frame(width: 80, alignment: .trailing)
-                            
-                            Text("\(item.count)")
+                            Text("Price")
+                                .fontWeight(.bold)
+                                .frame(width: 60, alignment: .trailing)
+                            Text("Qty")
+                                .fontWeight(.bold)
                                 .frame(width: 40, alignment: .trailing)
                         }
-                        .font(.system(size: 20))
                         Divider()
+                        
+                        ForEach(user.orderedProducts){ item in
+                            HStack {
+                                Text(item.name)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                Text("\(String(format: "%.2f", item.price))$")
+                                    .frame(width: 80, alignment: .trailing)
+                                
+                                Text("\(item.count)")
+                                    .frame(width: 40, alignment: .trailing)
+                            }
+                            .font(.system(size: 20))
+                            Divider()
+                        }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding()
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding()
+                .scrollIndicators(.hidden)
+                .padding(.vertical)
             }
-            .scrollIndicators(.hidden)
-            .padding(.vertical)
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -88,7 +104,7 @@ struct UserDetailsView: View {
             TextField("Product name...", text: $productName)
             
             TextField("Product count...", text: $countOfProduct)
-
+            
             Button("Cancel", role: .cancel) {
                 withAnimation {
                     countOfProduct = "1"
@@ -100,8 +116,8 @@ struct UserDetailsView: View {
             
             Button("OK") {
                 withAnimation {
-                    user.orderedProducts?.append(OrderedProduct(name: productName, price: 10.0, count: 1))
-                    CoreDataManager.shared.saveContext()
+                    user.orderedProducts.append(OrderedProduct(name: productName, price: 10.0, count: 1))
+                    CoreDataManager.shared.updateUserName(user: user)
                     
                     countOfProduct = "1"
                     productName = ""

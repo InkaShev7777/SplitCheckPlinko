@@ -20,7 +20,6 @@ struct PlusButtonSubView: View {
                     // action
                     withAnimation {
                         isShowAlert = true
-                        print("DEBUG: isShowAler: \(isShowAlert)")
                     }
                 } label: {
                     Image(systemName: "plus")
