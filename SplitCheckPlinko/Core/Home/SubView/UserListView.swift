@@ -13,7 +13,7 @@ struct UserListView: View {
     var body: some View {
         VStack {
             ForEach(usersList){ user in
-                UserCardCellView(userName: user.userName)
+                UserCardCellView(user: user)
             }
         }
     }

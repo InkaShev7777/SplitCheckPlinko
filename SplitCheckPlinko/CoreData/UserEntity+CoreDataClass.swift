@@ -2,7 +2,7 @@
 //  UserEntity+CoreDataClass.swift
 //  SplitCheckPlinko
 //
-//  Created by Ilya Schevchenko on 12.12.2024.
+//  Created by Ilya Schevchenko on 13.12.2024.
 //
 //
 

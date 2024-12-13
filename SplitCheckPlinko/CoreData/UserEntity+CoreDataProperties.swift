@@ -2,7 +2,7 @@
 //  UserEntity+CoreDataProperties.swift
 //  SplitCheckPlinko
 //
-//  Created by Ilya Schevchenko on 12.12.2024.
+//  Created by Ilya Schevchenko on 13.12.2024.
 //
 //
 
@@ -18,6 +18,7 @@ extension UserEntity {
 
     @NSManaged public var id: String?
     @NSManaged public var userName: String?
+    @NSManaged public var orderedProducts: Data?
 
 }
 

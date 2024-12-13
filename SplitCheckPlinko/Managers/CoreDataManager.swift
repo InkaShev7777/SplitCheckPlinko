@@ -50,4 +50,15 @@ class CoreDataManager {
             print("Failed to delete user: \(error)")
         }
     }
+    
+    func saveContext() {
+        let context = PersistenceController.shared.container.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                print("Failed to save context: \(error)")
+            }
+        }
+    }
 }

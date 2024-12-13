@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct UserCardCellView: View {
-    var userName: String
+    var user: User
     
     var body: some View {
         VStack {
             VStack {
-                Text(userName)
+                Text(user.userName)
                     .font(.title)
                     .fontWeight(.semibold)
                 
                 Button {
                     // action
-                    print("DEBUG: More Info Button")
+                    print("DEBUG: \(user.orderedProducts?[0].name)")
+//                    user.orderedProducts?.append(OrderedProduct(name: "test", price: 1.0, count: 1))
+//                    CoreDataManager.shared.saveContext()
                 } label: {
                     Text("More Info")
                 }
@@ -35,6 +37,6 @@ struct UserCardCellView: View {
     }
 }
 
-#Preview {
-    UserCardCellView(userName: "Ilya")
-}
+//#Preview {
+//    UserCardCellView(userName: "Ilya")
+//}
