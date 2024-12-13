@@ -12,11 +12,13 @@ class User: Identifiable {
     var id: String
     var userName: String
     var orderedProducts: [OrderedProduct]
+    var totalPrice: Double
     
     init(id: String = UUID().uuidString, userName: String) {
         self.id = id
         self.userName = userName
         self.orderedProducts = []
+        self.totalPrice = 0.0
     }
 }
 
@@ -27,6 +29,7 @@ extension UserEntity {
            let products = try? JSONDecoder().decode([OrderedProduct].self, from: productsData) {
             user.orderedProducts = products
         }
+        user.totalPrice = totalPrice ?? 0.0
         return user
     }
 }
@@ -40,6 +43,7 @@ extension User {
         if let productsData = try? JSONEncoder().encode(self.orderedProducts) {
             entity.orderedProducts = productsData
         }
+        entity.totalPrice = self.totalPrice
         return entity
     }
 }

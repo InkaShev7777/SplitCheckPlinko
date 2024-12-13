@@ -19,6 +19,7 @@ extension UserEntity {
     @NSManaged public var id: String?
     @NSManaged public var userName: String?
     @NSManaged public var orderedProducts: Data?
+    @NSManaged public var totalPrice: Double
 
 }
 

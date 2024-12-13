@@ -26,9 +26,9 @@
 		C1694DA52D0B2B7B00805854 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694DA42D0B2B7B00805854 /* User.swift */; };
 		C1694DB42D0B341500805854 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1694DB32D0B341500805854 /* CoreDataManager.swift */; };
 		C1B08E5A2D0C33C800F62EA0 /* OrderedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E592D0C33C800F62EA0 /* OrderedProduct.swift */; };
-		C1B08E5D2D0C39F500F62EA0 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E5B2D0C39F500F62EA0 /* UserEntity+CoreDataClass.swift */; };
-		C1B08E5E2D0C39F500F62EA0 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E5C2D0C39F500F62EA0 /* UserEntity+CoreDataProperties.swift */; };
 		C1B08E632D0C3CE900F62EA0 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E622D0C3CE900F62EA0 /* UserDetailsView.swift */; };
+		C1B08E662D0C836100F62EA0 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E642D0C836100F62EA0 /* UserEntity+CoreDataClass.swift */; };
+		C1B08E672D0C836100F62EA0 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E652D0C836100F62EA0 /* UserEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,9 +71,9 @@
 		C1694DA42D0B2B7B00805854 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C1694DB32D0B341500805854 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C1B08E592D0C33C800F62EA0 /* OrderedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedProduct.swift; sourceTree = "<group>"; };
-		C1B08E5B2D0C39F500F62EA0 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C1B08E5C2D0C39F500F62EA0 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C1B08E622D0C3CE900F62EA0 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
+		C1B08E642D0C836100F62EA0 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C1B08E652D0C836100F62EA0 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,8 +190,8 @@
 		C1694D8D2D0B0D2D00805854 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				C1B08E5B2D0C39F500F62EA0 /* UserEntity+CoreDataClass.swift */,
-				C1B08E5C2D0C39F500F62EA0 /* UserEntity+CoreDataProperties.swift */,
+				C1B08E642D0C836100F62EA0 /* UserEntity+CoreDataClass.swift */,
+				C1B08E652D0C836100F62EA0 /* UserEntity+CoreDataProperties.swift */,
 				C1694D642D0B0CE800805854 /* Persistence.swift */,
 			);
 			path = CoreData;
@@ -431,20 +431,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1694D682D0B0CE800805854 /* SplitCheckPlinko.xcdatamodeld in Sources */,
-				C1B08E5D2D0C39F500F62EA0 /* UserEntity+CoreDataClass.swift in Sources */,
 				C1694DA22D0B21CB00805854 /* HomeViewModel.swift in Sources */,
 				C1694D9E2D0B17D900805854 /* UserListView.swift in Sources */,
 				C1694DB42D0B341500805854 /* CoreDataManager.swift in Sources */,
 				C1B08E632D0C3CE900F62EA0 /* UserDetailsView.swift in Sources */,
 				C1694D652D0B0CE800805854 /* Persistence.swift in Sources */,
+				C1B08E672D0C836100F62EA0 /* UserEntity+CoreDataProperties.swift in Sources */,
 				C1B08E5A2D0C33C800F62EA0 /* OrderedProduct.swift in Sources */,
 				C1694D5E2D0B0CE700805854 /* WelcomeView.swift in Sources */,
 				C1694D9A2D0B144A00805854 /* EmptyHomeView.swift in Sources */,
+				C1B08E662D0C836100F62EA0 /* UserEntity+CoreDataClass.swift in Sources */,
 				C1694D942D0B0E7A00805854 /* HomeView.swift in Sources */,
 				C1694D9C2D0B15EA00805854 /* UserCardCellView.swift in Sources */,
 				C1694DA52D0B2B7B00805854 /* User.swift in Sources */,
 				C1694D972D0B10BD00805854 /* WelcomeSubView.swift in Sources */,
-				C1B08E5E2D0C39F500F62EA0 /* UserEntity+CoreDataProperties.swift in Sources */,
 				C1694D5C2D0B0CE700805854 /* SplitCheckPlinkoApp.swift in Sources */,
 				C1694DA02D0B1C2C00805854 /* PlusButtonSubView.swift in Sources */,
 			);

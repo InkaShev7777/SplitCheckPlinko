@@ -29,11 +29,11 @@ struct UserDetailsView: View {
             
             // price for this user
             HStack {
-                Text("Total Price: ")
+                Text("Total Price:")
                     .font(.title2)
                     .fontWeight(.semibold)
                 
-                Text("12.85$")
+                Text("\(String(format: "%.2f", user.totalPrice))$")
                     .font(.title2)
                     .fontWeight(.bold)
             }
@@ -91,6 +91,9 @@ struct UserDetailsView: View {
                 .padding(.vertical)
             }
         }
+        .onAppear {
+            user.totalPrice = calculateTotalSum(for: user.orderedProducts)
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Image(systemName: "plus")
@@ -117,6 +120,7 @@ struct UserDetailsView: View {
             Button("OK") {
                 withAnimation {
                     user.orderedProducts.append(OrderedProduct(name: productName, price: 10.0, count: 1))
+                    user.totalPrice = calculateTotalSum(for: user.orderedProducts)
                     CoreDataManager.shared.updateUserName(user: user)
                     
                     countOfProduct = "1"
@@ -127,6 +131,14 @@ struct UserDetailsView: View {
             }
         }
     }
+}
+
+func calculateTotalSum(for items: [OrderedProduct]) -> Double {
+    var totalSum: Double = 0.0
+    for item in items {
+        totalSum += Double(item.price) * Double(item.count)
+    }
+    return totalSum
 }
 
 //#Preview {

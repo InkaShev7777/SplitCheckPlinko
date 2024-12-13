@@ -3,6 +3,7 @@
     <entity name="UserEntity" representedClassName="UserEntity" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="orderedProducts" optional="YES" attributeType="Binary"/>
+        <attribute name="totalPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="userName" optional="YES" attributeType="String"/>
     </entity>
 </model>
