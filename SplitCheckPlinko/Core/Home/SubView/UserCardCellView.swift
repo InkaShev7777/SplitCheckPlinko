@@ -31,9 +31,6 @@ struct UserCardCellView: View {
             .background(Color.gray)
             .cornerRadius(7.0)
         }
-//        NavigationView {
-//
-//        }
     }
 }
 

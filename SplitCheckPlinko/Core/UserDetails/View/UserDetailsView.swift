@@ -9,6 +9,10 @@ import SwiftUI
 
 struct UserDetailsView: View {
     @State var user: User
+    @State var isPlusButtonPressed: Bool = false
+    @State var productName: String = ""
+    @State var countOfProduct: String = "1"
+    @State var price: Double = 0
     
     var body: some View {
         VStack {
@@ -70,6 +74,41 @@ struct UserDetailsView: View {
             }
             .scrollIndicators(.hidden)
             .padding(.vertical)
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Image(systemName: "plus")
+                    .frame(width: 30, height: 30)
+                    .tint(Color.black)
+                    .onTapGesture {
+                        isPlusButtonPressed = true                    }
+            }
+        }
+        .alert("Add Ordered Product", isPresented: $isPlusButtonPressed) {
+            TextField("Product name...", text: $productName)
+            
+            TextField("Product count...", text: $countOfProduct)
+
+            Button("Cancel", role: .cancel) {
+                withAnimation {
+                    countOfProduct = "1"
+                    productName = ""
+                    price = 0.0
+                    isPlusButtonPressed = false
+                }
+            }
+            
+            Button("OK") {
+                withAnimation {
+                    user.orderedProducts?.append(OrderedProduct(name: productName, price: 10.0, count: 1))
+                    CoreDataManager.shared.saveContext()
+                    
+                    countOfProduct = "1"
+                    productName = ""
+                    price = 0.0
+                    isPlusButtonPressed = false
+                }
+            }
         }
     }
 }
