@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var isShowAlert: Bool = false
+    @State var newUserName: String = ""
     @StateObject var viewModel = HomeViewModel.shared
     
     var body: some View {
         NavigationView {
             ZStack {
                 if viewModel.usersList.isEmpty {
-                    EmptyHomeView()
+                    EmptyHomeView(isShowAlert: $isShowAlert)
                 } else {
                     VStack {
                         ScrollView {
@@ -23,9 +25,32 @@ struct HomeView: View {
                         .scrollIndicators(.hidden)
                     }
                     
-                    PlusButtonSubView()
+                    PlusButtonSubView(isShowAlert: $isShowAlert)
                 }
             }
+            .alert("Add New User", isPresented: $isShowAlert) {
+                TextField("Enter the user name...", text: $newUserName)
+                
+                Button("Cancel", role: .cancel) {
+                    withAnimation {
+                        isShowAlert.toggle()
+                        newUserName = ""
+                    }
+                }
+                
+                Button("OK") {
+                    withAnimation {
+                        if !newUserName.isEmpty {
+                            CoreDataManager.shared.addUser(user: User(userName: newUserName))
+                            viewModel.getCoreData()
+                        }
+                        newUserName = ""
+                        isShowAlert = false
+                    }
+                }
+
+            }
+            
         }
     }
 }

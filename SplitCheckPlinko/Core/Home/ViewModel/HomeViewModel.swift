@@ -18,7 +18,6 @@ class HomeViewModel: ObservableObject {
     
     public func getCoreData() {
         usersList = CoreDataManager.shared.fetchUsers()
-        print("DEBUG: Core Data")
     }
     
     func addNewUser(name: String) {
