@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct UserCardCellView: View {
-    var user: User
+    @Binding var isShowPlusButton: Bool
+    @State var user: User
     
     var body: some View {
         VStack {
@@ -17,11 +18,10 @@ struct UserCardCellView: View {
                     .font(.title)
                     .fontWeight(.semibold)
                 
-                Button {
-                    // action
-                    print("DEBUG: \(user.orderedProducts?[0].name)")
-//                    user.orderedProducts?.append(OrderedProduct(name: "test", price: 1.0, count: 1))
-//                    CoreDataManager.shared.saveContext()
+                NavigationLink {
+                    withAnimation {
+                        UserDetailsView(user: user)
+                    }
                 } label: {
                     Text("More Info")
                 }
@@ -31,9 +31,9 @@ struct UserCardCellView: View {
             .background(Color.gray)
             .cornerRadius(7.0)
         }
-        .frame(width: UIScreen.main.bounds.width)
-        .padding()
-        
+//        NavigationView {
+//
+//        }
     }
 }
 

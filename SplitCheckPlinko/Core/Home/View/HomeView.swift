@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @State var isShowAlert: Bool = false
     @State var newUserName: String = ""
+    @State var isShowPlusButton: Bool = true
     @StateObject var viewModel = HomeViewModel.shared
     
     var body: some View {
@@ -20,11 +21,10 @@ struct HomeView: View {
                 } else {
                     VStack {
                         ScrollView {
-                            UserListView(usersList: $viewModel.usersList)
+                            UserListView(usersList: $viewModel.usersList, isShowPlusButton: $isShowPlusButton)
                         }
                         .scrollIndicators(.hidden)
                     }
-                    
                     PlusButtonSubView(isShowAlert: $isShowAlert)
                 }
             }
@@ -48,9 +48,7 @@ struct HomeView: View {
                         isShowAlert = false
                     }
                 }
-
             }
-            
         }
     }
 }

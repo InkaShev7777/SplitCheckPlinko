@@ -9,11 +9,12 @@ import SwiftUI
 
 struct UserListView: View {
     @Binding var usersList: [User]
+    @Binding var isShowPlusButton: Bool
     
     var body: some View {
         VStack {
             ForEach(usersList){ user in
-                UserCardCellView(user: user)
+                UserCardCellView(isShowPlusButton: $isShowPlusButton, user: user)
             }
         }
     }
