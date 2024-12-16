@@ -10,6 +10,7 @@ import SwiftUI
 struct UserDetailsView: View {
     @State var user: User
     @State var isPlusButtonPressed: Bool = false
+    @State var showDeleteAlert: Bool = false
     @State var productName: String = ""
     @State var countOfProduct: String = "1"
     @State var price: Double = 0
@@ -102,7 +103,36 @@ struct UserDetailsView: View {
                     .frame(width: 30, height: 30)
                     .tint(Color.black)
                     .onTapGesture {
-                        isPlusButtonPressed = true                    }
+                        withAnimation {
+                            isPlusButtonPressed = true
+                        }
+                    }
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Image(systemName: "trash")
+                    .frame(width: 30, height: 30)
+                    .tint(Color.black)
+                    .onTapGesture {
+                        withAnimation {
+                            showDeleteAlert = true
+                        }
+                    }
+            }
+        }
+        .alert("Delete \(user.userName)", isPresented: $showDeleteAlert) {
+            
+            Button("Cancel", role: .cancel) {
+                withAnimation {
+                    showDeleteAlert = false
+                }
+            }
+            
+            Button("OK") {
+                withAnimation {
+                    HomeViewModel.shared.deleteUser(user: user)
+                    showDeleteAlert = false
+                }
             }
         }
         .alert("Add Ordered Product", isPresented: $isPlusButtonPressed) {

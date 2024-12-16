@@ -9,44 +9,26 @@ import SwiftUI
 
 struct UserCardCellView: View {
     @State var user: User
-    @State var showDeleteAlert: Bool = false
     
     var body: some View {
         VStack {
-            VStack {
-                Text(user.userName)
-                    .font(.title)
-                    .fontWeight(.semibold)
-                
-                NavigationLink {
-                    withAnimation {
-                        UserDetailsView(user: user)
-                    }
-                } label: {
-                    Text("More Info")
+            NavigationLink {
+                UserDetailsView(user: user)
+            } label: {
+                VStack {
+                    Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .foregroundStyle(Color.black)
+                    
+                    Text(user.userName)
+                        .font(.title)
+                        .fontWeight(.semibold)
                 }
-                .padding(.top, 1)
-            }
-            .frame(width: 250, height: 200)
-            .background(Color.gray)
-            .cornerRadius(7.0)
-        }
-        .onLongPressGesture {
-            showDeleteAlert = true
-        }
-        .alert("Delete \(user.userName)", isPresented: $showDeleteAlert) {
-            
-            Button("Cancel", role: .cancel) {
-                withAnimation {
-                    showDeleteAlert = false
-                }
-            }
-            
-            Button("OK") {
-                withAnimation {
-                    HomeViewModel.shared.deleteUser(user: user)
-                    showDeleteAlert = false
-                }
+                .frame(width: 250, height: 200)
+                .background(Color.gray)
+                .cornerRadius(7.0)
+                .tint(Color.black)
             }
         }
     }
