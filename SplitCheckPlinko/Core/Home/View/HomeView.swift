@@ -25,7 +25,10 @@ struct HomeView: View {
                         }
                         .scrollIndicators(.hidden)
                     }
-                    PlusButtonSubView(isShowAlert: $isShowAlert)
+                    HStack {
+                        CalculateButtonSubView()
+                        PlusButtonSubView(isShowAlert: $isShowAlert)
+                    }
                 }
             }
             .alert("Add New User", isPresented: $isShowAlert) {

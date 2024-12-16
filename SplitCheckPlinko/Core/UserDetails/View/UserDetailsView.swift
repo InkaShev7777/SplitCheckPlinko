@@ -93,6 +93,8 @@ struct UserDetailsView: View {
         }
         .onAppear {
             user.totalPrice = calculateTotalSum(for: user.orderedProducts)
+            print("Total now: \(user.totalPrice)")
+            CoreDataManager.shared.updateUserName(user: user)
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

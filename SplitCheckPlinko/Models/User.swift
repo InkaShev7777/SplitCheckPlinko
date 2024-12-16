@@ -29,7 +29,7 @@ extension UserEntity {
            let products = try? JSONDecoder().decode([OrderedProduct].self, from: productsData) {
             user.orderedProducts = products
         }
-        user.totalPrice = totalPrice ?? 0.0
+        user.totalPrice = totalPrice
         return user
     }
 }

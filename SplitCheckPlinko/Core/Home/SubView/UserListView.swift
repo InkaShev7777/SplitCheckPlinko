@@ -14,7 +14,7 @@ struct UserListView: View {
     var body: some View {
         VStack {
             ForEach(usersList){ user in
-                UserCardCellView(isShowPlusButton: $isShowPlusButton, user: user)
+                UserCardCellView(user: user)
             }
         }
     }

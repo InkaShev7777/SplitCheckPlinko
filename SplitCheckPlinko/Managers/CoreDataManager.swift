@@ -77,6 +77,7 @@ class CoreDataManager {
             }
             
             userEntity.userName = user.userName
+            userEntity.totalPrice = user.totalPrice
             if let productsData = try? JSONEncoder().encode(user.orderedProducts) {
                 userEntity.orderedProducts = productsData
             }

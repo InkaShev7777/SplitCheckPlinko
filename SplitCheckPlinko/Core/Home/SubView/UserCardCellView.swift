@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct UserCardCellView: View {
-    @Binding var isShowPlusButton: Bool
     @State var user: User
     
     var body: some View {
