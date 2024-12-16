@@ -17,9 +17,9 @@ struct GameView: View {
         }
         
         private func makeScene(size: CGSize) -> SKScene {
-            let scene = GameScene()
-            scene.size = size
-            scene.scaleMode = .resizeFill
+            let scene = GameScene(size: UIScreen.main.bounds.size, listOfUsers: HomeViewModel.shared.usersList)
+//            scene.size = size
+//            scene.scaleMode = .resizeFill
             return scene
         }
 }
