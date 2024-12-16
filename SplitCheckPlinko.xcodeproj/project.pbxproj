@@ -28,6 +28,8 @@
 		C180ECBA2D101E4E00EA77DD /* CalculateButtonSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180ECB92D101E4E00EA77DD /* CalculateButtonSubView.swift */; };
 		C180ECBE2D10207F00EA77DD /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180ECBD2D10207F00EA77DD /* SplitView.swift */; };
 		C180ECC62D10269C00EA77DD /* CalculatedUserCheckCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180ECC52D10269C00EA77DD /* CalculatedUserCheckCellView.swift */; };
+		C180ECCC2D103CFE00EA77DD /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180ECCB2D103CFE00EA77DD /* GameView.swift */; };
+		C180ECD22D103D6000EA77DD /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180ECD12D103D6000EA77DD /* GameScene.swift */; };
 		C1B08E5A2D0C33C800F62EA0 /* OrderedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E592D0C33C800F62EA0 /* OrderedProduct.swift */; };
 		C1B08E632D0C3CE900F62EA0 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E622D0C3CE900F62EA0 /* UserDetailsView.swift */; };
 		C1B08E662D0C836100F62EA0 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E642D0C836100F62EA0 /* UserEntity+CoreDataClass.swift */; };
@@ -76,6 +78,8 @@
 		C180ECB92D101E4E00EA77DD /* CalculateButtonSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateButtonSubView.swift; sourceTree = "<group>"; };
 		C180ECBD2D10207F00EA77DD /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		C180ECC52D10269C00EA77DD /* CalculatedUserCheckCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatedUserCheckCellView.swift; sourceTree = "<group>"; };
+		C180ECCB2D103CFE00EA77DD /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		C180ECD12D103D6000EA77DD /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C1B08E592D0C33C800F62EA0 /* OrderedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedProduct.swift; sourceTree = "<group>"; };
 		C1B08E622D0C3CE900F62EA0 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		C1B08E642D0C836100F62EA0 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 				C1694D8E2D0B0D4400805854 /* Home */,
 				C1B08E5F2D0C3CB500F62EA0 /* UserDetails */,
 				C180ECBB2D10206200EA77DD /* SplitView */,
+				C180ECC72D10364900EA77DD /* Game */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -307,6 +312,31 @@
 				C180ECC52D10269C00EA77DD /* CalculatedUserCheckCellView.swift */,
 			);
 			path = SubView;
+			sourceTree = "<group>";
+		};
+		C180ECC72D10364900EA77DD /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				C180ECC82D10365B00EA77DD /* View */,
+				C180ECCA2D103C2900EA77DD /* Scene */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		C180ECC82D10365B00EA77DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C180ECCB2D103CFE00EA77DD /* GameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C180ECCA2D103C2900EA77DD /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				C180ECD12D103D6000EA77DD /* GameScene.swift */,
+			);
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		C1B08E5F2D0C3CB500F62EA0 /* UserDetails */ = {
@@ -468,8 +498,10 @@
 				C180ECBA2D101E4E00EA77DD /* CalculateButtonSubView.swift in Sources */,
 				C1B08E662D0C836100F62EA0 /* UserEntity+CoreDataClass.swift in Sources */,
 				C1694D942D0B0E7A00805854 /* HomeView.swift in Sources */,
+				C180ECCC2D103CFE00EA77DD /* GameView.swift in Sources */,
 				C1694D9C2D0B15EA00805854 /* UserCardCellView.swift in Sources */,
 				C180ECC62D10269C00EA77DD /* CalculatedUserCheckCellView.swift in Sources */,
+				C180ECD22D103D6000EA77DD /* GameScene.swift in Sources */,
 				C1694DA52D0B2B7B00805854 /* User.swift in Sources */,
 				C180ECBE2D10207F00EA77DD /* SplitView.swift in Sources */,
 				C1694D972D0B10BD00805854 /* WelcomeSubView.swift in Sources */,

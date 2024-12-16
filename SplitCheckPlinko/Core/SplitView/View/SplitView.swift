@@ -39,7 +39,7 @@ struct SplitView: View {
             
             ZStack {
                 NavigationLink {
-                    
+                    GameView()
                 } label: {
                     Text("Try Your Luck")
                         .font(.title2)
