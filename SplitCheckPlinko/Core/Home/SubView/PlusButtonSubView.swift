@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PlusButtonSubView: View {
+    @Binding var isShowAlert: Bool
+    
     var body: some View {
         VStack {
             Spacer()
@@ -16,7 +18,9 @@ struct PlusButtonSubView: View {
                 
                 Button {
                     // action
-                    print("Plus Button was Pressed")
+                    withAnimation {
+                        isShowAlert = true
+                    }
                 } label: {
                     Image(systemName: "plus")
                         .frame(width: 60, height: 60)
@@ -31,6 +35,6 @@ struct PlusButtonSubView: View {
     }
 }
 
-#Preview {
-    PlusButtonSubView()
-}
+//#Preview {
+//    PlusButtonSubView(isShowAlert: <#Binding<Bool>#>)
+//}

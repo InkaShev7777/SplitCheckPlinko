@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct UserCardCellView: View {
-    var userName: String
+    @State var user: User
+    @State var showDeleteAlert: Bool = false
     
     var body: some View {
         VStack {
             VStack {
-                Text(userName)
+                Text(user.userName)
                     .font(.title)
                     .fontWeight(.semibold)
                 
-                Button {
-                    // action
-                    print("DEBUG: More Info Button")
+                NavigationLink {
+                    withAnimation {
+                        UserDetailsView(user: user)
+                    }
                 } label: {
                     Text("More Info")
                 }
@@ -29,12 +31,27 @@ struct UserCardCellView: View {
             .background(Color.gray)
             .cornerRadius(7.0)
         }
-        .frame(width: UIScreen.main.bounds.width)
-        .padding()
-        
+        .onLongPressGesture {
+            showDeleteAlert = true
+        }
+        .alert("Delete \(user.userName)", isPresented: $showDeleteAlert) {
+            
+            Button("Cancel", role: .cancel) {
+                withAnimation {
+                    showDeleteAlert = false
+                }
+            }
+            
+            Button("OK") {
+                withAnimation {
+                    HomeViewModel.shared.deleteUser(user: user)
+                    showDeleteAlert = false
+                }
+            }
+        }
     }
 }
 
-#Preview {
-    UserCardCellView(userName: "Ilya")
-}
+//#Preview {
+//    UserCardCellView(userName: "Ilya")
+//}

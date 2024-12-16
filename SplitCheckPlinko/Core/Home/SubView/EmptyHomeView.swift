@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct EmptyHomeView: View {
+    @StateObject var viewModel = HomeViewModel.shared
+    
+    @Binding var isShowAlert: Bool
+    
     var body: some View {
         VStack {
             Spacer()
@@ -17,7 +21,7 @@ struct EmptyHomeView: View {
                 .fontWeight(.semibold)
             
             Button {
-                
+                isShowAlert = true
             } label: {
                 Text("Add User")
                     .font(.title2)
@@ -31,6 +35,6 @@ struct EmptyHomeView: View {
     }
 }
 
-#Preview {
-    EmptyHomeView()
-}
+//#Preview {
+//    EmptyHomeView()
+//}

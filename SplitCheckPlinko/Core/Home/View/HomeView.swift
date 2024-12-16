@@ -8,23 +8,49 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var usersList: [String] = ["Ilya", "Vlad", "Mark"]
+    @State var isShowAlert: Bool = false
+    @State var newUserName: String = ""
+    @State var isShowPlusButton: Bool = true
+    @StateObject var viewModel = HomeViewModel.shared
     
     var body: some View {
         NavigationView {
             ZStack {
-                if usersList.isEmpty {
-                    EmptyHomeView()
+                if viewModel.usersList.isEmpty {
+                    EmptyHomeView(isShowAlert: $isShowAlert)
                 } else {
                     VStack {
                         ScrollView {
-                            UserListView(usersList: $usersList)
+                            UserListView(usersList: $viewModel.usersList, isShowPlusButton: $isShowPlusButton)
                         }
                         .scrollIndicators(.hidden)
                     }
+                    HStack {
+                        CalculateButtonSubView()
+                        PlusButtonSubView(isShowAlert: $isShowAlert)
+                    }
+                }
+            }
+            .alert("Add New User", isPresented: $isShowAlert) {
+                TextField("Enter the user name...", text: $newUserName)
+                
+                Button("Cancel", role: .cancel) {
+                    withAnimation {
+                        isShowAlert.toggle()
+                        newUserName = ""
+                    }
                 }
                 
-                PlusButtonSubView()
+                Button("OK") {
+                    withAnimation {
+                        if !newUserName.isEmpty {
+                            CoreDataManager.shared.addUser(user: User(userName: newUserName))
+                            viewModel.getCoreData()
+                        }
+                        newUserName = ""
+                        isShowAlert = false
+                    }
+                }
             }
         }
     }
