@@ -23,4 +23,9 @@ class HomeViewModel: ObservableObject {
     func addNewUser(name: String) {
         
     }
+    
+    func deleteUser(user: User) {
+        CoreDataManager.shared.deleteUser(user: user)
+        getCoreData()
+    }
 }

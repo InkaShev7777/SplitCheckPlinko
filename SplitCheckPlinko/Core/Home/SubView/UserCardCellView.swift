@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserCardCellView: View {
     @State var user: User
+    @State var showDeleteAlert: Bool = false
     
     var body: some View {
         VStack {
@@ -29,6 +30,25 @@ struct UserCardCellView: View {
             .frame(width: 250, height: 200)
             .background(Color.gray)
             .cornerRadius(7.0)
+        }
+
+        .onLongPressGesture {
+            showDeleteAlert = true
+        }
+        .alert("Delete \(user.userName)", isPresented: $showDeleteAlert) {
+            
+            Button("Cancel", role: .cancel) {
+                withAnimation {
+                    showDeleteAlert = false
+                }
+            }
+            
+            Button("OK") {
+                withAnimation {
+                    HomeViewModel.shared.deleteUser(user: user)
+                    showDeleteAlert = false
+                }
+            }
         }
     }
 }
