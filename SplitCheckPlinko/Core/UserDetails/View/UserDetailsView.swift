@@ -138,7 +138,11 @@ struct UserDetailsView: View {
         .alert("Add Ordered Product", isPresented: $isPlusButtonPressed) {
             TextField("Product name...", text: $productName)
             
-            TextField("Product count...", text: $countOfProduct)
+//            TextField("Product count...", text: $countOfProduct)
+            TextField("Введите число", text: $countOfProduct)
+                                    .keyboardType(.numberPad)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .padding()
             
             Button("Cancel", role: .cancel) {
                 withAnimation {
