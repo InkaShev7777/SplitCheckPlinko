@@ -20,48 +20,32 @@ struct HomeView: View {
                     .resizable()
                     .ignoresSafeArea()
                 
+                if isShowAlert {
+                    CustomAlertAddUserView(isShowAlert: $isShowAlert)
+                }
+                
                 VStack {
-                    HeaderView()
-                    
-                    if viewModel.usersList.isEmpty {
-                        EmptyHomeView(isShowAlert: $isShowAlert)
-                    } else {
-                        VStack {
+                    VStack {
+                        HeaderView()
+
+                        if viewModel.usersList.isEmpty {
+                            EmptyHomeView(isShowAlert: $isShowAlert)
+                        } else {
                             ScrollView {
                                 UserListView(usersList: $viewModel.usersList, isShowPlusButton: $isShowPlusButton)
                             }
+                            .frame(height: 600)
                             .frame(maxHeight: .infinity)
                             .scrollIndicators(.hidden)
                         }
                     }
-                }
-                
-                if !viewModel.usersList.isEmpty {
-                    HStack {
-                        CalculateButtonSubView()
-                            .padding(.leading)
-                        PlusButtonSubView(isShowAlert: $isShowAlert)
-                    }
-                }
-            }
-            .alert("Add New User", isPresented: $isShowAlert) {
-                TextField("Enter the user name...", text: $newUserName)
-                
-                Button("Cancel", role: .cancel) {
-                    withAnimation {
-                        isShowAlert.toggle()
-                        newUserName = ""
-                    }
-                }
-                
-                Button("OK") {
-                    withAnimation {
-                        if !newUserName.isEmpty {
-                            CoreDataManager.shared.addUser(user: User(userName: newUserName))
-                            viewModel.getCoreData()
+                    
+                    if !viewModel.usersList.isEmpty {
+                        HStack {
+                            CalculateButtonSubView()
+                                .padding(.leading)
+                            PlusButtonSubView(isShowAlert: $isShowAlert)
                         }
-                        newUserName = ""
-                        isShowAlert = false
                     }
                 }
             }

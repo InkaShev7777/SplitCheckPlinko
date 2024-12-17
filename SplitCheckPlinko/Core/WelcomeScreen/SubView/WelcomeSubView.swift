@@ -11,7 +11,7 @@ struct WelcomeSubView: View {
     var body: some View {
         VStack {
             Text("Split Check Blinko")
-                .font(.system(size: 34))
+                .font(.system(size: 44))
                 .fontWeight(.bold)
                 .foregroundStyle(Color.white)
         }

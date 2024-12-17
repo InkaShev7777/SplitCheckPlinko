@@ -31,6 +31,7 @@
 		C180ECCC2D103CFE00EA77DD /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180ECCB2D103CFE00EA77DD /* GameView.swift */; };
 		C180ECD22D103D6000EA77DD /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180ECD12D103D6000EA77DD /* GameScene.swift */; };
 		C19404D82D11918200B922A3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19404D72D11918200B922A3 /* HeaderView.swift */; };
+		C19404DA2D11AD2000B922A3 /* CustomAlertAddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19404D92D11AD2000B922A3 /* CustomAlertAddUserView.swift */; };
 		C1B08E5A2D0C33C800F62EA0 /* OrderedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E592D0C33C800F62EA0 /* OrderedProduct.swift */; };
 		C1B08E632D0C3CE900F62EA0 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E622D0C3CE900F62EA0 /* UserDetailsView.swift */; };
 		C1B08E662D0C836100F62EA0 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E642D0C836100F62EA0 /* UserEntity+CoreDataClass.swift */; };
@@ -82,6 +83,7 @@
 		C180ECCB2D103CFE00EA77DD /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		C180ECD12D103D6000EA77DD /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C19404D72D11918200B922A3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		C19404D92D11AD2000B922A3 /* CustomAlertAddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertAddUserView.swift; sourceTree = "<group>"; };
 		C1B08E592D0C33C800F62EA0 /* OrderedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedProduct.swift; sourceTree = "<group>"; };
 		C1B08E622D0C3CE900F62EA0 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		C1B08E642D0C836100F62EA0 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				C1694D9F2D0B1C2C00805854 /* PlusButtonSubView.swift */,
 				C180ECB92D101E4E00EA77DD /* CalculateButtonSubView.swift */,
 				C19404D72D11918200B922A3 /* HeaderView.swift */,
+				C19404D92D11AD2000B922A3 /* CustomAlertAddUserView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				C180ECBE2D10207F00EA77DD /* SplitView.swift in Sources */,
 				C1694D972D0B10BD00805854 /* WelcomeSubView.swift in Sources */,
 				C1694D5C2D0B0CE700805854 /* SplitCheckPlinkoApp.swift in Sources */,
+				C19404DA2D11AD2000B922A3 /* CustomAlertAddUserView.swift in Sources */,
 				C19404D82D11918200B922A3 /* HeaderView.swift in Sources */,
 				C1694DA02D0B1C2C00805854 /* PlusButtonSubView.swift in Sources */,
 			);

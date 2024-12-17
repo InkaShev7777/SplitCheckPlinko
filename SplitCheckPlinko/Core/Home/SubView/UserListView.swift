@@ -18,6 +18,7 @@ struct UserListView: View {
                     .padding(.horizontal)
             }
         }
+        .zIndex(5)
     }
 }
 
