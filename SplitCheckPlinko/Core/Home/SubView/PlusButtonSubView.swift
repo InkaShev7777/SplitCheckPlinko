@@ -22,12 +22,8 @@ struct PlusButtonSubView: View {
                         isShowAlert = true
                     }
                 } label: {
-                    Image(systemName: "plus")
+                    Image("button-plus")
                         .frame(width: 60, height: 60)
-                        .background(Color.black)
-                        .foregroundStyle(Color.white)
-                        .cornerRadius(50)
-                        .font(.title2)
                 }
                 .padding(.horizontal, 20)
             }

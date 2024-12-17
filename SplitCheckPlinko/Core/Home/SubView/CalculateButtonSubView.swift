@@ -14,15 +14,11 @@ struct CalculateButtonSubView: View {
             NavigationLink {
                 SplitView()
             } label: {
-                Text("Calculate")
-                    .font(.title3)
-                    .foregroundStyle(Color.white)
+                Image("button-calculate")
             }
             .frame(width: 150, height: 60)
-            .background(Color.black)
-            .cornerRadius(7.0)
-            .padding(.horizontal)
         }
+        .padding(.horizontal)
     }
 }
 
