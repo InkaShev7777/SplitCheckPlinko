@@ -28,4 +28,10 @@ class HomeViewModel: ObservableObject {
         CoreDataManager.shared.deleteUser(user: user)
         getCoreData()
     }
+    
+    func currentDateFormatted() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE dd"
+        return formatter.string(from: Date())
+    }
 }

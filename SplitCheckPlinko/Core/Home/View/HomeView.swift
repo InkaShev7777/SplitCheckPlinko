@@ -16,17 +16,30 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                if viewModel.usersList.isEmpty {
-                    EmptyHomeView(isShowAlert: $isShowAlert)
-                } else {
-                    VStack {
-                        ScrollView {
-                            UserListView(usersList: $viewModel.usersList, isShowPlusButton: $isShowPlusButton)
+                Image("background")
+                    .resizable()
+                    .ignoresSafeArea()
+                
+                VStack {
+                    HeaderView()
+                    
+                    if viewModel.usersList.isEmpty {
+                        EmptyHomeView(isShowAlert: $isShowAlert)
+                    } else {
+                        VStack {
+                            ScrollView {
+                                UserListView(usersList: $viewModel.usersList, isShowPlusButton: $isShowPlusButton)
+                            }
+                            .frame(maxHeight: .infinity)
+                            .scrollIndicators(.hidden)
                         }
-                        .scrollIndicators(.hidden)
                     }
+                }
+                
+                if !viewModel.usersList.isEmpty {
                     HStack {
                         CalculateButtonSubView()
+                            .padding(.leading)
                         PlusButtonSubView(isShowAlert: $isShowAlert)
                     }
                 }

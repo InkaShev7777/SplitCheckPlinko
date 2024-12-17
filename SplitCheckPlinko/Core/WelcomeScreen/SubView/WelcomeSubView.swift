@@ -13,6 +13,7 @@ struct WelcomeSubView: View {
             Text("Split Check Blinko")
                 .font(.system(size: 34))
                 .fontWeight(.bold)
+                .foregroundStyle(Color.white)
         }
     }
 }
