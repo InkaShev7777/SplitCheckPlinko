@@ -10,49 +10,35 @@ import SwiftUI
 struct SplitView: View {
     @StateObject var viewModel = HomeViewModel.shared
     @State var totalAmount: Double = 0.0
+    
     var body: some View {
         VStack {
-            HStack {
-                Text("Total Amount:")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                
-                Text("\(String(format: "%.2f", totalAmount))$")
-                    .font(.title2)
-                    .fontWeight(.bold)
-            }
+            HeaderView()
             
-            Divider()
-            
-            ScrollView {
-                ForEach(viewModel.usersList){ user in
-                    NavigationLink {
-                        withAnimation {
-                            UserDetailsView(user: user)
+            VStack {
+                VStack {
+                    ScrollView {
+                        ForEach(viewModel.usersList){ user in
+                            CalculatedUserCheckCellView(user: user)
                         }
+                    }
+                }
+                
+                VStack {
+                    NavigationLink {
+                        
                     } label: {
-                        CalculatedUserCheckCellView(userName: user.userName, totalPrice: user.totalPrice)
-                            .tint(Color.black)
+                        Image("button-game")
                     }
                 }
             }
-            
-            ZStack {
-                NavigationLink {
-                    GameView()
-                } label: {
-                    Text("Try Your Luck")
-                        .font(.title2)
-                        .foregroundStyle(Color.white)
-                        .frame(width: 170, height: 50)
-                        .background(Color.blue)
-                        .cornerRadius(8.0)
-                }
-                .padding()
-            }
         }
-        .onAppear {
-            totalAmount = viewModel.usersList.reduce(0) { $0 + $1.totalPrice }
+//        .navigationBarBackButtonHidden()
+//        .padding(.top, 45)
+//        .ignoresSafeArea()
+        .background {
+            Image("background")
+                .ignoresSafeArea()
         }
     }
 }
