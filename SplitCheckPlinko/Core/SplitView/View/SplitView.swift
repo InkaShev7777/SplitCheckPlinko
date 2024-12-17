@@ -26,7 +26,7 @@ struct SplitView: View {
                 
                 VStack {
                     NavigationLink {
-                        
+                        GameView()
                     } label: {
                         Image("button-game")
                     }
