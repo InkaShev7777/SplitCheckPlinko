@@ -8,32 +8,38 @@
 import SwiftUI
 
 struct UserCardCellView: View {
-    @Binding var isShowPlusButton: Bool
     @State var user: User
     
     var body: some View {
         VStack {
             VStack {
                 Text(user.userName)
-                    .font(.title)
-                    .fontWeight(.semibold)
+                    .font(.system(size: 27))
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color.white)
+                    .padding(.bottom, 10)
                 
                 NavigationLink {
-                    withAnimation {
-                        UserDetailsView(user: user)
-                    }
+                    UserDetailsView(user: user)
                 } label: {
-                    Text("More Info")
+                    VStack {
+                        Image("button-more-info")
+                            .frame(width: 194, height: 39)
+                    }
                 }
-                .padding(.top, 1)
+                
             }
-            .frame(width: 250, height: 200)
-            .background(Color.gray)
+            .frame(width: 313, height: 149)
+            .background {
+                Image("background-user-card")
+                   
+            }
             .cornerRadius(7.0)
+            .tint(Color.black)
         }
     }
 }
 
-//#Preview {
-//    UserCardCellView(userName: "Ilya")
-//}
+#Preview {
+    UserCardCellView(user: User(userName: "Ilya"))
+}
