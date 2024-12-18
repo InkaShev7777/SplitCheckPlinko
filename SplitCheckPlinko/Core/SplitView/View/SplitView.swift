@@ -8,38 +8,54 @@
 import SwiftUI
 
 struct SplitView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @StateObject var viewModel = HomeViewModel.shared
     @State var totalAmount: Double = 0.0
     
     var body: some View {
-        VStack {
-            HeaderView()
-            
+        NavigationView {
             VStack {
+                HeaderView()
+                
                 VStack {
                     ScrollView {
                         ForEach(viewModel.usersList){ user in
-                            CalculatedUserCheckCellView(user: user)
+                            if user.totalPrice > 0 {
+                                CalculatedUserCheckCellView(user: user)
+                            }
                         }
                     }
+                    
+                    VStack {
+                        NavigationLink {
+                            GameView()
+                        } label: {
+                            Image("button-game")
+                        }
+                    }
+                    .padding(.bottom, -35)
                 }
-                
-                VStack {
-                    NavigationLink {
-                        GameView()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        withAnimation {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                     } label: {
-                        Image("button-game")
+                        Image("back-button")
+                            .resizable()
+                            .frame(width: 38, height: 40)
                     }
                 }
             }
+            .background {
+                Image("background")
+                    .ignoresSafeArea()
+            }
         }
-//        .navigationBarBackButtonHidden()
-//        .padding(.top, 45)
-//        .ignoresSafeArea()
-        .background {
-            Image("background")
-                .ignoresSafeArea()
-        }
+        .navigationBarBackButtonHidden()
     }
 }
 
