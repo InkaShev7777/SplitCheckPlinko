@@ -143,5 +143,5 @@ struct CustomAddProductAlertView: View {
 }
 
 //#Preview {
-//    CustomAddProductAlertView(isShowAlert: true)
+//    CustomAddProductAlertView(user: User(userName: "Ilya"), isShowAlert: true)
 //}

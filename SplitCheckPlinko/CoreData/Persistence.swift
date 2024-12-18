@@ -22,6 +22,8 @@ struct PersistenceController {
                     fatalError("Unresolved error \(error), \(error.userInfo)")
                 }
             }
+            
+            print("DEBUG: \(container.persistentStoreDescriptions.first?.url)")
         }
     
 }

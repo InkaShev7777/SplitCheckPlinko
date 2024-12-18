@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserCardCellView: View {
-    @State var user: User
+    @ObservedObject var user: User
     
     var body: some View {
         VStack {

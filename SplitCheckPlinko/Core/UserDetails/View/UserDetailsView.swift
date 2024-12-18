@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct UserDetailsView: View {
-    @State var user: User
-    @State var isPlusButtonPressed: Bool = false
+    @Environment(\.presentationMode) var presentationMode
+    
+    @ObservedObject var user: User
+    
+    @State var showAddProductAlert: Bool = false
     @State var showDeleteAlert: Bool = false
+    
     @State var productName: String = ""
     @State var countOfProduct: String = "1"
     @State var price: Double = 0
@@ -21,162 +25,89 @@ struct UserDetailsView: View {
                 .resizable()
                 .ignoresSafeArea()
             
-            if isPlusButtonPressed {
-                CustomAddProductAlertView(user: user, isShowAlert: $isPlusButtonPressed)
+            if showAddProductAlert {
+                CustomAddProductAlertView(user: user, isShowAlert: $showAddProductAlert)
                     .zIndex(10)
+            }
+            
+            if showDeleteAlert {
+                CustomDeleteUserAlert(isShowDeleteAlert: $showDeleteAlert, user: user)
+                    
             }
             
             VStack {
                 //header
                 VStack {
-                    Image(systemName: "person.circle")
+                    Image("user-icon")
                         .resizable()
                         .frame(width: 100, height: 100)
-                        
-                    Text(user.userName)
-                        .font(.system(size: 35))
-                        .fontWeight(.bold)
-                }
-                
-                // price for this user
-                HStack {
-                    Text("Total Price:")
-                        .font(.title2)
-                        .fontWeight(.semibold)
                     
-                    Text("\(String(format: "%.2f", user.totalPrice))$")
-                        .font(.title2)
+                    Text(user.userName)
+                        .font(.system(size: 25))
                         .fontWeight(.bold)
+                        .foregroundStyle(.white)
                 }
                 
-                if user.orderedProducts.isEmpty {
+                //list of products
+                VStack {
                     VStack {
+                        Text("Orders list")
+                            .font(.system(size: 40))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .padding(7)
                         
-                        VStack {
-                            Text("There's nothing yet")
-                                .font(.title2)
-                            
-                            Text("Click on the plus button to add a product")
-                                .font(.footnote)
-                        }
-                        .padding(.top, 70)
-                        
-                        Spacer()
+                        Text("Total price: \(String(format: "%.2f", user.totalPrice))$")
+                            .font(.system(size: 18))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
                     }
-                } else {
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 8) {
-                            // Заголовок таблицы
-                            HStack {
-                                Text("Product")
-                                    .fontWeight(.bold)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Text("Price")
-                                    .fontWeight(.bold)
-                                    .frame(width: 60, alignment: .trailing)
-                                Text("Qty")
-                                    .fontWeight(.bold)
-                                    .frame(width: 40, alignment: .trailing)
-                            }
-                            Divider()
-                            
-                            ForEach(user.orderedProducts){ item in
-                                HStack {
-                                    Text(item.name)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                    
-                                    Text("\(String(format: "%.2f", item.price))$")
-                                        .frame(width: 80, alignment: .trailing)
-                                    
-                                    Text("\(item.count)")
-                                        .frame(width: 40, alignment: .trailing)
-                                }
-                                .font(.system(size: 20))
-                                Divider()
+                    
+                    VStack {
+                        ScrollView {
+                            ForEach(user.orderedProducts){ prod in
+                                OrderedProductCellView(user: user, orderedProduct: prod)
                             }
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .padding()
                     }
-                    .scrollIndicators(.hidden)
-                    .padding(.vertical)
                 }
-            }
-            .foregroundStyle(.white)
-            .onAppear {
-                user.totalPrice = calculateTotalSum(for: user.orderedProducts)
-                print("Total now: \(user.totalPrice)")
-                CoreDataManager.shared.updateUserName(user: user)
+                .background(Color("background-color").scaledToFill().ignoresSafeArea())
+                .frame(width: UIScreen.main.bounds.width)
+                .padding(.top)
             }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Image(systemName: "plus")
-                        .frame(width: 30, height: 30)
-                        .tint(Color.black)
-                        .onTapGesture {
-                            withAnimation {
-                                isPlusButtonPressed = true
-                            }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        withAnimation {
+                            self.presentationMode.wrappedValue.dismiss()
                         }
+                    } label: {
+                        Image("back-button")
+                    }
+                    .frame(width: 40, height: 40)
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Image(systemName: "trash")
-                        .frame(width: 30, height: 30)
-                        .tint(Color.black)
-                        .onTapGesture {
-                            withAnimation {
-                                showDeleteAlert = true
-                            }
-                        }
-                }
-            }
-            .alert("Delete \(user.userName)", isPresented: $showDeleteAlert) {
-                
-                Button("Cancel", role: .cancel) {
-                    withAnimation {
-                        showDeleteAlert = false
+                    Button {
+                        showAddProductAlert = true
+                    } label: {
+                        Image("plus-button")
                     }
+                    .frame(width: 40, height: 40)
+                    .padding(.top, 20)
                 }
                 
-                Button("OK") {
-                    withAnimation {
-                        HomeViewModel.shared.deleteUser(user: user)
-                        showDeleteAlert = false
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showDeleteAlert = true
+                    } label: {
+                        Image("basket-button")
                     }
-                }
+                    .frame(width: 40, height: 40)
+                }   
             }
-//            .alert("Add Ordered Product", isPresented: $isPlusButtonPressed) {
-//                TextField("Product name...", text: $productName)
-//                
-//                TextField("Введите число", text: $countOfProduct)
-//                                        .keyboardType(.numberPad)
-//                                        .textFieldStyle(RoundedBorderTextFieldStyle())
-//                                        .padding()
-//                
-//                Button("Cancel", role: .cancel) {
-//                    withAnimation {
-//                        countOfProduct = "1"
-//                        productName = ""
-//                        price = 0.0
-//                        isPlusButtonPressed = false
-//                    }
-//                }
-//                
-//                Button("OK") {
-//                    withAnimation {
-//                        user.orderedProducts.append(OrderedProduct(name: productName, price: 10.0, count: 1))
-//                        user.totalPrice = calculateTotalSum(for: user.orderedProducts)
-//                        CoreDataManager.shared.updateUserName(user: user)
-//                        
-//                        countOfProduct = "1"
-//                        productName = ""
-//                        price = 0.0
-//                        isPlusButtonPressed = false
-//                    }
-//                }
-//            }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
@@ -188,6 +119,6 @@ func calculateTotalSum(for items: [OrderedProduct]) -> Double {
     return totalSum
 }
 
-//#Preview {
-//    UserDetailsView()
-//}
+#Preview {
+    UserDetailsView(user: User(userName: "Vlad"))
+}
