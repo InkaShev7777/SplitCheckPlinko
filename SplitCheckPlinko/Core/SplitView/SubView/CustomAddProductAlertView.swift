@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct CustomAddProductAlertView: View {
+    @State var user: User
     @State var nameProduct: String = ""
-    @State var priceProduct: String = "10"
+    @State var textPriceProduct: String = "0"
+    @State var priceProduct: Double = 0.0
     @State var countOfProduct: Int = 1
+    
+    @Binding var isShowAlert: Bool
+    
     var body: some View {
         ZStack {
             Image("background-add-product-alert")
@@ -35,8 +40,21 @@ struct CustomAddProductAlertView: View {
                             }
                         
                         HStack {
-                            TextField("", text: $priceProduct)
+                            TextField("", text: Binding(
+                                get: { textPriceProduct },
+                                set: { newValue in
+                                    textPriceProduct = newValue.filter { "0123456789.".contains($0) }
+                                    
+                                    let components = textPriceProduct.split(separator: ".")
+                                    if components.count > 2 {
+                                        textPriceProduct = components[0] + "." + components[1]
+                                    }
+                                    
+                                    priceProduct = Double(textPriceProduct) ?? 0.0
+                                }
+                            ))
                                 .frame(width: 55, height: 49)
+                                .keyboardType(.numberPad)
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .tint(.white)
@@ -84,14 +102,34 @@ struct CustomAddProductAlertView: View {
                 
                 HStack {
                     Button {
-                        
+                        withAnimation {
+                            isShowAlert = false
+                            nameProduct = ""
+                            countOfProduct = 1
+                            textPriceProduct = "0"
+                        }
                     } label: {
                         Image("button-cancel")
                             .frame(width: 150, height: 90)
                     }
                     
                     Button {
-                        
+                        withAnimation {
+                            isShowAlert = false
+                            if !nameProduct.isEmpty && priceProduct > 0 {
+                                user.orderedProducts.append(OrderedProduct(
+                                    name: nameProduct,
+                                    price: priceProduct,
+                                    count: countOfProduct)
+                                )
+                                user.totalPrice = calculateTotalSum(for: user.orderedProducts)
+                                CoreDataManager.shared.updateUserName(user: user)
+                            }
+                            
+                            nameProduct = ""
+                            countOfProduct = 1
+                            textPriceProduct = "0"
+                        }
                     } label: {
                         Image("button-save")
                             .frame(width: 150, height: 90)
@@ -104,6 +142,6 @@ struct CustomAddProductAlertView: View {
     }
 }
 
-#Preview {
-    CustomAddProductAlertView()
-}
+//#Preview {
+//    CustomAddProductAlertView(isShowAlert: true)
+//}

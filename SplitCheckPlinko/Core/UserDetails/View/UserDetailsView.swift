@@ -20,6 +20,11 @@ struct UserDetailsView: View {
              Image("background")
                 .resizable()
                 .ignoresSafeArea()
+
+            if isPlusButtonPressed {
+                CustomAddProductAlertView(user: user, isShowAlert: $isPlusButtonPressed)
+                    .zIndex(10)
+            }
             
             VStack {
                 //header
@@ -138,36 +143,6 @@ struct UserDetailsView: View {
                     withAnimation {
                         HomeViewModel.shared.deleteUser(user: user)
                         showDeleteAlert = false
-                    }
-                }
-            }
-            .alert("Add Ordered Product", isPresented: $isPlusButtonPressed) {
-                TextField("Product name...", text: $productName)
-                
-                TextField("Введите число", text: $countOfProduct)
-                                        .keyboardType(.numberPad)
-                                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                                        .padding()
-                
-                Button("Cancel", role: .cancel) {
-                    withAnimation {
-                        countOfProduct = "1"
-                        productName = ""
-                        price = 0.0
-                        isPlusButtonPressed = false
-                    }
-                }
-                
-                Button("OK") {
-                    withAnimation {
-                        user.orderedProducts.append(OrderedProduct(name: productName, price: 10.0, count: 1))
-                        user.totalPrice = calculateTotalSum(for: user.orderedProducts)
-                        CoreDataManager.shared.updateUserName(user: user)
-                        
-                        countOfProduct = "1"
-                        productName = ""
-                        price = 0.0
-                        isPlusButtonPressed = false
                     }
                 }
             }
