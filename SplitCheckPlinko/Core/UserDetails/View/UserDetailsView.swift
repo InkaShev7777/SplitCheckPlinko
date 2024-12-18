@@ -30,6 +30,11 @@ struct UserDetailsView: View {
                     .zIndex(10)
             }
             
+            if showDeleteAlert {
+                CustomDeleteUserAlert(isShowDeleteAlert: $showDeleteAlert, user: user)
+                    
+            }
+            
             VStack {
                 //header
                 VStack {
