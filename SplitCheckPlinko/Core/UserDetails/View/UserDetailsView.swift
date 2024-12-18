@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct UserDetailsView: View {
-    @State var user: User
-    @State var isPlusButtonPressed: Bool = false
+    @ObservedObject var user: User
+    
+    @State var showAddProductAlert: Bool = false
     @State var showDeleteAlert: Bool = false
+    
     @State var productName: String = ""
     @State var countOfProduct: String = "1"
     @State var price: Double = 0
@@ -20,9 +22,9 @@ struct UserDetailsView: View {
              Image("background")
                 .resizable()
                 .ignoresSafeArea()
-
-            if isPlusButtonPressed {
-                CustomAddProductAlertView(user: user, isShowAlert: $isPlusButtonPressed)
+            
+            if showAddProductAlert {
+                CustomAddProductAlertView(user: user, isShowAlert: $showAddProductAlert)
                     .zIndex(10)
             }
             
@@ -77,6 +79,9 @@ struct UserDetailsView: View {
                                 Text("Qty")
                                     .fontWeight(.bold)
                                     .frame(width: 40, alignment: .trailing)
+                                Text("Action")
+                                    .fontWeight(.bold)
+                                    .frame(width: 70, alignment: .trailing)
                             }
                             Divider()
                             
@@ -90,6 +95,13 @@ struct UserDetailsView: View {
                                     
                                     Text("\(item.count)")
                                         .frame(width: 40, alignment: .trailing)
+                                    
+                                    Button {
+                                        //action delete product from list ordered products.
+                                        HomeViewModel.shared.deleteProduct(user: user, idProduct: item.id)
+                                    } label: {
+                                        Text("Delete")
+                                    }
                                 }
                                 .font(.system(size: 20))
                                 Divider()
@@ -115,7 +127,7 @@ struct UserDetailsView: View {
                         .tint(Color.black)
                         .onTapGesture {
                             withAnimation {
-                                isPlusButtonPressed = true
+                                showAddProductAlert = true
                             }
                         }
                 }

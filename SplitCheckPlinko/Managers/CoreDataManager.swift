@@ -50,6 +50,51 @@ class CoreDataManager {
             print("Failed to delete user: \(error)")
         }
     }
+    
+    func deleteProduct(for user: User, productID: String) {
+        let context = PersistenceController.shared.container.viewContext
+        let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", user.id)
+
+        do {
+            let results = try context.fetch(fetchRequest)
+            guard let userEntity = results.first else {
+                print("User not found in Core Data.")
+                return
+            }
+
+            guard let data = userEntity.orderedProducts,
+                  var orderedProducts = try? JSONDecoder().decode([OrderedProduct].self, from: data) else {
+                print("Failed to decode ordered products.")
+                return
+            }
+
+            // Удаляем продукт с указанным ID
+            let initialCount = orderedProducts.count
+            orderedProducts.removeAll { $0.id == productID }
+            
+            if orderedProducts.count == initialCount {
+                print("Product with ID \(productID) not found.")
+                return
+            }
+
+            // Обновляем массив продуктов
+            userEntity.orderedProducts = try? JSONEncoder().encode(orderedProducts)
+            
+            // Пересчитываем totalPrice
+            let totalPrice = orderedProducts.reduce(0.0) { $0 + $1.price * Double($1.count) }
+            userEntity.totalPrice = totalPrice
+
+            // Сохраняем изменения в контексте
+            try context.save()
+            print("Product removed successfully. New total price: \(totalPrice)")
+
+        } catch {
+            print("Failed to delete product: \(error)")
+        }
+    }
+
+
     func saveContext() {
         let context = PersistenceController.shared.container.viewContext
             if context.hasChanges {
