@@ -10,10 +10,19 @@ import SwiftUI
 struct WelcomeSubView: View {
     var body: some View {
         VStack {
-            Text("Split Check Blinko")
-                .font(.system(size: 44))
-                .fontWeight(.bold)
-                .foregroundStyle(Color.white)
+            VStack {
+                Image("icon")
+                    .resizable()
+                    .frame(width: 150, height: 150)
+                    .scaledToFill()
+                
+                Text("Split Check Blinko")
+                    .font(.system(size: 44))
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color.white)
+            }
+            .padding(.bottom, 100)
+            
         }
     }
 }

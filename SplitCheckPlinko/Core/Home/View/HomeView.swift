@@ -15,35 +15,29 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                HeaderView()
-                
-                Spacer()
-                
-                if isShowAlert {
-                    CustomAlertAddUserView(isShowAlert: $isShowAlert)
+            ZStack {
+                VStack {
+                    HeaderView()
+                    
                     Spacer()
                 }
                 
+                if isShowAlert {
+                    CustomAlertAddUserView(isShowAlert: $isShowAlert)
+                        .zIndex(10)
+                }
+                
                 VStack {
-                    VStack {
-
-                        if viewModel.usersList.isEmpty {
-                            if !isShowAlert {
-                                VStack {
-                                    Spacer()
-                                    EmptyHomeView(isShowAlert: $isShowAlert)
-                                    Spacer()
-                                }
-                            }
-                        } else {
-                            ScrollView {
-                                UserListView(usersList: $viewModel.usersList, isShowPlusButton: $isShowPlusButton)
-                            }
-                            .frame(height: 600)
-                            .frame(maxHeight: .infinity)
-                            .scrollIndicators(.hidden)
+                    if viewModel.usersList.isEmpty {
+                        if !isShowAlert {
+                            EmptyHomeView(isShowAlert: $isShowAlert)
                         }
+                    } else {
+                        ScrollView {
+                            UserListView(usersList: $viewModel.usersList, isShowPlusButton: $isShowPlusButton)
+                        }
+                        .frame(height: UIScreen.main.bounds.height / 1.4)
+                        .scrollIndicators(.hidden)
                     }
                     
                     if !viewModel.usersList.isEmpty {
@@ -54,6 +48,7 @@ struct HomeView: View {
                         }
                     }
                 }
+                .padding(.top, 80)
             }
             .background {
                 Image("background")
