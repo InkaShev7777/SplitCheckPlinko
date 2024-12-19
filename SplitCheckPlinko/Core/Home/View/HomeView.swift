@@ -15,42 +15,51 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                if viewModel.usersList.isEmpty {
-                    EmptyHomeView(isShowAlert: $isShowAlert)
-                } else {
+            VStack {
+                HeaderView()
+                
+                Spacer()
+                
+                if isShowAlert {
+                    CustomAlertAddUserView(isShowAlert: $isShowAlert)
+                    Spacer()
+                }
+                
+                VStack {
                     VStack {
-                        ScrollView {
-                            UserListView(usersList: $viewModel.usersList, isShowPlusButton: $isShowPlusButton)
+
+                        if viewModel.usersList.isEmpty {
+                            if !isShowAlert {
+                                VStack {
+                                    Spacer()
+                                    EmptyHomeView(isShowAlert: $isShowAlert)
+                                    Spacer()
+                                }
+                            }
+                        } else {
+                            ScrollView {
+                                UserListView(usersList: $viewModel.usersList, isShowPlusButton: $isShowPlusButton)
+                            }
+                            .frame(height: 600)
+                            .frame(maxHeight: .infinity)
+                            .scrollIndicators(.hidden)
                         }
-                        .scrollIndicators(.hidden)
                     }
-                    HStack {
-                        CalculateButtonSubView()
-                        PlusButtonSubView(isShowAlert: $isShowAlert)
+                    
+                    if !viewModel.usersList.isEmpty {
+                        HStack {
+                            CalculateButtonSubView()
+                                .padding(.leading)
+                            PlusButtonSubView(isShowAlert: $isShowAlert)
+                        }
                     }
                 }
             }
-            .alert("Add New User", isPresented: $isShowAlert) {
-                TextField("Enter the user name...", text: $newUserName)
-                
-                Button("Cancel", role: .cancel) {
-                    withAnimation {
-                        isShowAlert.toggle()
-                        newUserName = ""
-                    }
-                }
-                
-                Button("OK") {
-                    withAnimation {
-                        if !newUserName.isEmpty {
-                            CoreDataManager.shared.addUser(user: User(userName: newUserName))
-                            viewModel.getCoreData()
-                        }
-                        newUserName = ""
-                        isShowAlert = false
-                    }
-                }
+            .background {
+                Image("background")
+                    .resizable()
+                    .ignoresSafeArea()
+                    .scaledToFill()
             }
         }
     }

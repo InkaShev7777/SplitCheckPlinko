@@ -8,35 +8,43 @@
 import SwiftUI
 
 struct CalculatedUserCheckCellView: View {
-    var userName: String
-    var totalPrice: Double
+    @ObservedObject var user: User
     
     var body: some View {
         VStack {
-            HStack {
-                Text(userName)
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .padding(.horizontal, 10)
-                
-                Spacer()
+            Text(user.userName)
+                .font(.system(size: 27))
+                .fontWeight(.bold)
+                .foregroundStyle(Color.white)
+            
+            Text(String(format: "%.2f$", user.totalPrice))
+                .font(.system(size: 27))
+                .fontWeight(.bold)
+                .foregroundStyle(Color.white)
+                .padding(.bottom, 10)
+            
+            NavigationLink {
+                UserDetailsView(user: user)
+            } label: {
+                VStack {
+                    Image("button-order")
+                        .frame(width: 194, height: 39)
+                }
             }
             
-            HStack {
-                Spacer()
-                
-                Text("\(String(format: "%.2f", totalPrice))$")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.horizontal, 10)
-            }
         }
-        .frame(width: UIScreen.main.bounds.width - 60, height: 100)
-        .background(Color.gray)
+        .frame(width: UIScreen.main.bounds.width, height: 149)
+        .background {
+            Image("background-add-user-alert")
+                .resizable()
+                .frame(width: 313, height: 149)
+               
+        }
         .cornerRadius(7.0)
+        .tint(Color.black)
     }
 }
 
-//#Preview {
-//    CalculatedUserCheckCellView()
-//}
+#Preview {
+    CalculatedUserCheckCellView(user: User(userName: "Ilya"))
+}

@@ -15,8 +15,10 @@ struct UserListView: View {
         VStack {
             ForEach(usersList){ user in
                 UserCardCellView(user: user)
+                    .padding(.horizontal)
             }
         }
+        .zIndex(5)
     }
 }
 

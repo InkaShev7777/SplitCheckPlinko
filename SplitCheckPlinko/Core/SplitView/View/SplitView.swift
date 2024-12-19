@@ -8,52 +8,56 @@
 import SwiftUI
 
 struct SplitView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @StateObject var viewModel = HomeViewModel.shared
     @State var totalAmount: Double = 0.0
+    
     var body: some View {
-        VStack {
-            HStack {
-                Text("Total Amount:")
-                    .font(.title2)
-                    .fontWeight(.semibold)
+        NavigationView {
+            VStack {
+                HeaderView()
                 
-                Text("\(String(format: "%.2f", totalAmount))$")
-                    .font(.title2)
-                    .fontWeight(.bold)
+                VStack {
+                    ScrollView {
+                        ForEach(viewModel.usersList){ user in
+                            if user.totalPrice > 0 {
+                                CalculatedUserCheckCellView(user: user)
+                            }
+                        }
+                    }
+                    
+                    VStack {
+                        NavigationLink {
+                            GameView()
+                        } label: {
+                            Image("button-game")
+                        }
+                    }
+                    .padding(.bottom, -35)
+                }
             }
-            
-            Divider()
-            
-            ScrollView {
-                ForEach(viewModel.usersList){ user in
-                    NavigationLink {
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
                         withAnimation {
-                            UserDetailsView(user: user)
+                            self.presentationMode.wrappedValue.dismiss()
                         }
                     } label: {
-                        CalculatedUserCheckCellView(userName: user.userName, totalPrice: user.totalPrice)
-                            .tint(Color.black)
+                        Image("back-button")
+                            .resizable()
+                            .frame(width: 38, height: 40)
                     }
                 }
             }
-            
-            ZStack {
-                NavigationLink {
-                    GameView()
-                } label: {
-                    Text("Try Your Luck")
-                        .font(.title2)
-                        .foregroundStyle(Color.white)
-                        .frame(width: 170, height: 50)
-                        .background(Color.blue)
-                        .cornerRadius(8.0)
-                }
-                .padding()
+            .background {
+                Image("background")
+                    .resizable()
+                    .ignoresSafeArea()
+                    .scaledToFill()
             }
         }
-        .onAppear {
-            totalAmount = viewModel.usersList.reduce(0) { $0 + $1.totalPrice }
-        }
+        .navigationBarBackButtonHidden()
     }
 }
 

@@ -30,6 +30,12 @@
 		C180ECC62D10269C00EA77DD /* CalculatedUserCheckCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180ECC52D10269C00EA77DD /* CalculatedUserCheckCellView.swift */; };
 		C180ECCC2D103CFE00EA77DD /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180ECCB2D103CFE00EA77DD /* GameView.swift */; };
 		C180ECD22D103D6000EA77DD /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180ECD12D103D6000EA77DD /* GameScene.swift */; };
+		C19322D82D13071B00B2D808 /* OrderedProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19322D72D13071B00B2D808 /* OrderedProductCellView.swift */; };
+		C19322DA2D13258600B2D808 /* CustomDeleteUserAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19322D92D13258600B2D808 /* CustomDeleteUserAlert.swift */; };
+		C19404D82D11918200B922A3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19404D72D11918200B922A3 /* HeaderView.swift */; };
+		C19404DA2D11AD2000B922A3 /* CustomAlertAddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19404D92D11AD2000B922A3 /* CustomAlertAddUserView.swift */; };
+		C19404DC2D11BC9700B922A3 /* CustomAddProductAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19404DB2D11BC9700B922A3 /* CustomAddProductAlertView.swift */; };
+		C1A613F52D11F2DF004B2EAE /* CustomPayAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A613F42D11F2DF004B2EAE /* CustomPayAlertView.swift */; };
 		C1B08E5A2D0C33C800F62EA0 /* OrderedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E592D0C33C800F62EA0 /* OrderedProduct.swift */; };
 		C1B08E632D0C3CE900F62EA0 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E622D0C3CE900F62EA0 /* UserDetailsView.swift */; };
 		C1B08E662D0C836100F62EA0 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B08E642D0C836100F62EA0 /* UserEntity+CoreDataClass.swift */; };
@@ -80,6 +86,12 @@
 		C180ECC52D10269C00EA77DD /* CalculatedUserCheckCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatedUserCheckCellView.swift; sourceTree = "<group>"; };
 		C180ECCB2D103CFE00EA77DD /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		C180ECD12D103D6000EA77DD /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		C19322D72D13071B00B2D808 /* OrderedProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedProductCellView.swift; sourceTree = "<group>"; };
+		C19322D92D13258600B2D808 /* CustomDeleteUserAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDeleteUserAlert.swift; sourceTree = "<group>"; };
+		C19404D72D11918200B922A3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		C19404D92D11AD2000B922A3 /* CustomAlertAddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertAddUserView.swift; sourceTree = "<group>"; };
+		C19404DB2D11BC9700B922A3 /* CustomAddProductAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAddProductAlertView.swift; sourceTree = "<group>"; };
+		C1A613F42D11F2DF004B2EAE /* CustomPayAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPayAlertView.swift; sourceTree = "<group>"; };
 		C1B08E592D0C33C800F62EA0 /* OrderedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedProduct.swift; sourceTree = "<group>"; };
 		C1B08E622D0C3CE900F62EA0 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		C1B08E642D0C836100F62EA0 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -268,6 +280,8 @@
 				C1694D9D2D0B17D900805854 /* UserListView.swift */,
 				C1694D9F2D0B1C2C00805854 /* PlusButtonSubView.swift */,
 				C180ECB92D101E4E00EA77DD /* CalculateButtonSubView.swift */,
+				C19404D72D11918200B922A3 /* HeaderView.swift */,
+				C19404D92D11AD2000B922A3 /* CustomAlertAddUserView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -310,6 +324,8 @@
 			isa = PBXGroup;
 			children = (
 				C180ECC52D10269C00EA77DD /* CalculatedUserCheckCellView.swift */,
+				C19404DB2D11BC9700B922A3 /* CustomAddProductAlertView.swift */,
+				C19322D92D13258600B2D808 /* CustomDeleteUserAlert.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -318,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				C180ECC82D10365B00EA77DD /* View */,
+				C1A613F32D11F2BF004B2EAE /* SubVeiw */,
 				C180ECCA2D103C2900EA77DD /* Scene */,
 			);
 			path = Game;
@@ -339,9 +356,26 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
+		C19322D62D1306FD00B2D808 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				C19322D72D13071B00B2D808 /* OrderedProductCellView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		C1A613F32D11F2BF004B2EAE /* SubVeiw */ = {
+			isa = PBXGroup;
+			children = (
+				C1A613F42D11F2DF004B2EAE /* CustomPayAlertView.swift */,
+			);
+			path = SubVeiw;
+			sourceTree = "<group>";
+		};
 		C1B08E5F2D0C3CB500F62EA0 /* UserDetails */ = {
 			isa = PBXGroup;
 			children = (
+				C19322D62D1306FD00B2D808 /* SubView */,
 				C1B08E612D0C3CDB00F62EA0 /* View */,
 			);
 			path = UserDetails;
@@ -486,18 +520,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1694D682D0B0CE800805854 /* SplitCheckPlinko.xcdatamodeld in Sources */,
+				C1A613F52D11F2DF004B2EAE /* CustomPayAlertView.swift in Sources */,
 				C1694DA22D0B21CB00805854 /* HomeViewModel.swift in Sources */,
 				C1694D9E2D0B17D900805854 /* UserListView.swift in Sources */,
 				C1694DB42D0B341500805854 /* CoreDataManager.swift in Sources */,
 				C1B08E632D0C3CE900F62EA0 /* UserDetailsView.swift in Sources */,
 				C1694D652D0B0CE800805854 /* Persistence.swift in Sources */,
 				C1B08E672D0C836100F62EA0 /* UserEntity+CoreDataProperties.swift in Sources */,
+				C19404DC2D11BC9700B922A3 /* CustomAddProductAlertView.swift in Sources */,
 				C1B08E5A2D0C33C800F62EA0 /* OrderedProduct.swift in Sources */,
 				C1694D5E2D0B0CE700805854 /* WelcomeView.swift in Sources */,
+				C19322DA2D13258600B2D808 /* CustomDeleteUserAlert.swift in Sources */,
 				C1694D9A2D0B144A00805854 /* EmptyHomeView.swift in Sources */,
 				C180ECBA2D101E4E00EA77DD /* CalculateButtonSubView.swift in Sources */,
 				C1B08E662D0C836100F62EA0 /* UserEntity+CoreDataClass.swift in Sources */,
 				C1694D942D0B0E7A00805854 /* HomeView.swift in Sources */,
+				C19322D82D13071B00B2D808 /* OrderedProductCellView.swift in Sources */,
 				C180ECCC2D103CFE00EA77DD /* GameView.swift in Sources */,
 				C1694D9C2D0B15EA00805854 /* UserCardCellView.swift in Sources */,
 				C180ECC62D10269C00EA77DD /* CalculatedUserCheckCellView.swift in Sources */,
@@ -506,6 +544,8 @@
 				C180ECBE2D10207F00EA77DD /* SplitView.swift in Sources */,
 				C1694D972D0B10BD00805854 /* WelcomeSubView.swift in Sources */,
 				C1694D5C2D0B0CE700805854 /* SplitCheckPlinkoApp.swift in Sources */,
+				C19404DA2D11AD2000B922A3 /* CustomAlertAddUserView.swift in Sources */,
+				C19404D82D11918200B922A3 /* HeaderView.swift in Sources */,
 				C1694DA02D0B1C2C00805854 /* PlusButtonSubView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class User: Identifiable {
+class User: Identifiable, ObservableObject {
     var id: String
     var userName: String
     var orderedProducts: [OrderedProduct]
