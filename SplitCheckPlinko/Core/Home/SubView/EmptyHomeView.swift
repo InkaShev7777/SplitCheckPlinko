@@ -13,28 +13,27 @@ struct EmptyHomeView: View {
     @Binding var isShowAlert: Bool
     
     var body: some View {
-        VStack {
+        ZStack {
             Spacer()
             
-            Text("You must add users to continue")
-                .font(.title2)
-                .fontWeight(.semibold)
-            
-            Button {
-                isShowAlert = true
-            } label: {
-                Text("Add User")
+            VStack(spacing: -5) {
+                Text("You must add users to continue")
                     .font(.title2)
-                    .frame(width: 150, height: 40)
-                    .background(Color.gray)
-                    .cornerRadius(7.0)
-                    .tint(Color.white)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                
+                Button {
+                    isShowAlert = true
+                } label: {
+                    Image("button-add-user")
+                }
             }
             Spacer()
         }
+        .background(.clear)
     }
 }
 
-//#Preview {
-//    EmptyHomeView()
-//}
+#Preview {
+    EmptyHomeView(isShowAlert: .constant(true))
+}

@@ -15,21 +15,27 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Image("background")
-                    .resizable()
-                    .ignoresSafeArea()
+            VStack {
+                HeaderView()
+                
+                Spacer()
                 
                 if isShowAlert {
                     CustomAlertAddUserView(isShowAlert: $isShowAlert)
+                    Spacer()
                 }
                 
                 VStack {
                     VStack {
-                        HeaderView()
 
                         if viewModel.usersList.isEmpty {
-                            EmptyHomeView(isShowAlert: $isShowAlert)
+                            if !isShowAlert {
+                                VStack {
+                                    Spacer()
+                                    EmptyHomeView(isShowAlert: $isShowAlert)
+                                    Spacer()
+                                }
+                            }
                         } else {
                             ScrollView {
                                 UserListView(usersList: $viewModel.usersList, isShowPlusButton: $isShowPlusButton)
@@ -48,6 +54,12 @@ struct HomeView: View {
                         }
                     }
                 }
+            }
+            .background {
+                Image("background")
+                    .resizable()
+                    .ignoresSafeArea()
+                    .scaledToFill()
             }
         }
     }

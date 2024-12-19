@@ -52,7 +52,9 @@ struct SplitView: View {
             }
             .background {
                 Image("background")
+                    .resizable()
                     .ignoresSafeArea()
+                    .scaledToFill()
             }
         }
         .navigationBarBackButtonHidden()
